@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <title>Digital Clock</title>
+     <style>
+        *
+        {
+            margin: 0px;
+            padding: 0px;
+        }
+        #a
+        {
+            background-size: 100% 500px;
+            background-repeat: no-repeat;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-image: linear-gradient(120deg , yellow , cyan , orange);
+        }
+        #maindiv
+        {
+            width: 30%;
+            height: 300px;
+            background-color:gainsboro;
+            position: relative;
+            top: 90px;
+            left: 0px;
+            box-shadow: 5px 5px 0px greenyellow , -5px -5px 0px red ;
+            transition: box-shadow 1s ;
+            border-radius: 10px;
+            opacity: 0.4;
+        }
+        #maindiv:hover
+        {
+            box-shadow: -5px -5px 0px greenyellow , 5px 5px 0px red ;
+        }
+        h1{
+            color: white;
+            text-shadow: 0px 0px 4px black;
+        }
+        #date
+        {
+            /* color: coral; */
+            font-size: 40px;
+            position: absolute;
+            top: 40%;
+            left: 40%;
+            z-index: 10;
+        }
+        #time
+        {
+            /* color:cyan; */
+            font-size: 37px;
+            position: absolute;
+            top: 25%;
+            left: 42%;
+            z-index: 10;
+        }
+        #day
+        {
+            /* color:cyan; */
+            font-size: 37px;
+            position: absolute;
+            top: 57%;
+            left: 41%;
+            z-index: 10;
+        }
+        #sec
+        {
+            font-size: 250px;
+            position: absolute;
+            top: 22%;
+            left: 38%;
+            z-index: 0;
+        }
+     </style>
+</head>
+<body onload="digitalclock()" id="a">
+    <div id="maindiv">
+        
+</div>
+<h1 id="time"></h1>
+    <h1 id="date"></h1>
+    <h1 id="day"></h1>
+<h1 id="sec"></h1>
+    <script>
+        function digitalclock()
+        {
+            var date=new Date()
+            var hh=date.getHours()
+            var mm=date.getMinutes()
+            var ss=date.getSeconds()
+            var dd=date.getDate()
+            var mo=date.getMonth()
+            var yy=date.getFullYear()
+            var day=date.getDay()
+            var am_pm="AM"
+            if(hh>=12)
+            {
+                am_pm="PM"
+                {
+                    hh-=12
+                }
+            }
+            if(hh==0)
+            {
+                am_pm="AM"
+                hh=12
+            }
+            switch(mo)
+            {
+                case 0:mo="Jan" 
+                break;
+                case 1:mo="Feb" 
+                break;
+                case 2:mo="Mar" 
+                break;
+                case 3:mo="Apr" 
+                break;
+                case 4:mo="May" 
+                break;
+                case 5:mo="Jun" 
+                break;
+                case 6:mo="July"
+                 break;
+                case 7:mo="Aug" 
+                break;
+                case 8:mo="Sep" 
+                break;
+                case 9:mo="Oct" 
+                break;
+                case 10:mo="Nov"
+                 break;
+                case 11:mo="Dec"
+                 break;
+            }
+
+            switch(day)
+            {
+                case 0:day="Sun" 
+                // document.getElementById("a").style.backgroundImage="url(sunday.jpg)"
+                break;
+                case 1:day="Mon" 
+                // document.getElementById("a").style.backgroundImage="url(monday.jpeg)"
+                break;
+                case 2:day="Tue" 
+                // document.getElementById("a").style.backgroundImage="url(tuesday.jpeg)"
+                break;
+                case 3:day="Wed" 
+                // document.getElementById("a").style.backgroundImage="url(wednesday.jpeg)"
+                break;
+                case 4:day="Thursday" 
+                // document.getElementById("a").style.backgroundImage="url(thursday.jpeg)"
+                break;
+                case 5:day="Fri" 
+                // document.getElementById("a").style.backgroundImage="url(friday.png)"
+                break;
+                case 6:day="Sat" 
+                // document.getElementById("a").style.backgroundImage="url(saturday.jpg)"
+                break;
+            }
+            document.getElementById("date").innerHTML=dd+"/"+mo+"/"+yy
+            document.getElementById("time").innerHTML=hh+":"+mm+" "+am_pm
+            document.getElementById("day").innerHTML=day
+            document.getElementById("sec").innerHTML=ss
+            var updatethetime=setTimeout(function(){digitalclock()},1000)
+        }
+    </script>
+</body>
+</html>
